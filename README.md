@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Lastify is a PHP library that syncs your top tracks on last.fm to a spotify playlist. 
+Lastify is a PHP library that syncs your top tracks on last.fm to a spotify playlist. The library is fully unit tested.
 
 ## Install
 
@@ -19,9 +19,32 @@ $ composer require hansott/lastify
 
 ## Usage
 
+1. Generate a spotify access token: [Spotify Api Console](https://developer.spotify.com/web-api/console/get-current-user/) (OAuth Scope: playlist-read-private, playlist-modify-public & playlist-modify-private)
+2. Find your spotify user id: [Get Current User's Profile](https://developer.spotify.com/web-api/console/get-current-user/)
+3. Create a last.fm API account and copy the api key and api secret: [Create API account](http://www.last.fm/api/account/create) (Note: You cannot view your API account after creating.)
+
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+<?php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+use HansOtt\Lastify\Manager;
+use HansOtt\Lastify\LastFm\LastFmConnection;
+use HansOtt\Lastify\Spotify\SpotifyConnection;
+
+$lastFmConnection = LastFmConnection::connect(
+    'your last.fm username',
+    'your last.fm api key',
+    'your last.fm api secret'
+);
+
+$spotifyConnection = SpotifyConnection::connect(
+    'your spotify user id',
+    'your spotify access token'
+);
+
+$manager = new Manager($spotifyConnection, $lastFmConnection);
+$manager->syncTopTracksToPlaylist('Top Tracks', 30);
 ```
 
 ## Change log
