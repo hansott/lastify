@@ -1,4 +1,4 @@
-# lastify
+# Lastify
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Lastify syncs spotify playlists with your last.fm top tracks.
+Lastify is a PHP library that syncs your top tracks on last.fm to a spotify playlist. 
 
 ## Install
 

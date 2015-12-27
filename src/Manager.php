@@ -16,10 +16,10 @@ class Manager
         $this->lastFm = $lastFm;
     }
 
-    public function syncTopTracksToPlaylist($playlistName, $amount = 10)
+    public function syncTopTracksToPlaylist($playlistName, $limit = 10)
     {
         $spotifyPlaylist = $this->spotify->createPlaylistIfNotExists($playlistName);
-        $tracks = $this->lastFm->getTopTracks($amount);
+        $tracks = $this->lastFm->getTopTracks($limit);
         $this->spotify->updatePlaylistTracks($spotifyPlaylist, $tracks);
     }
 }
