@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Lastify is a PHP library that syncs your top tracks on last.fm to a spotify playlist. The library is fully unit tested.
+Lastify is a PHP library that syncs your top tracks on last.fm to a Spotify playlist. The library is fully unit tested.
 
 ## Install
 
