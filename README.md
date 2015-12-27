@@ -26,7 +26,7 @@ $ composer require hansott/lastify
 ``` php
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 use HansOtt\Lastify\Manager;
 use HansOtt\Lastify\LastFm\LastFmConnection;
