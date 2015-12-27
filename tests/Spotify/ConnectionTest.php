@@ -24,7 +24,7 @@ class ConnectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($userId, $connection->getUser()->getUserId());
     }
 
-    public function test_it_can_get_user_playlists()
+    public function test_it_can_get_the_users_playlists()
     {
         $playlists = [
             new SpotifyPlaylist('Test', '111'),
