@@ -5,7 +5,7 @@ ini_set('display_errors', 'On');
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use HansOtt\Lastify\Manager;
+use HansOtt\Lastify\Synchronizer;
 use HansOtt\Lastify\LastFm\LastFmConnection;
 use HansOtt\Lastify\Spotify\SpotifyConnection;
 
@@ -20,5 +20,5 @@ $spotifyConnection = SpotifyConnection::connect(
     'spotify access token'
 );
 
-$manager = new Manager($spotifyConnection, $lastFmConnection);
+$manager = new Synchronizer($spotifyConnection, $lastFmConnection);
 $manager->syncTopTracksToPlaylist('Top Tracks', 30);

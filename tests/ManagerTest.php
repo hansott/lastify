@@ -6,7 +6,7 @@ use HansOtt\Lastify\Track;
 use HansOtt\Lastify\Track\Artist;
 use HansOtt\Lastify\TrackCollection;
 use Mockery;
-use HansOtt\Lastify\Manager;
+use HansOtt\Lastify\Synchronizer;
 use HansOtt\Lastify\LastFm\LastFmConnection;
 use HansOtt\Lastify\Spotify\SpotifyConnection;
 use HansOtt\Lastify\Spotify\SpotifyPlaylist;
@@ -43,7 +43,7 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
             ->shouldReceive('updatePlaylistTracks')
             ->once()
             ->withArgs([$spotifyPlaylist, $topTracks]);
-        $manager = new Manager($spotify, $lastFm);
+        $manager = new Synchronizer($spotify, $lastFm);
         $manager->syncTopTracksToPlaylist($playlistName, $limit);
     }
 }
