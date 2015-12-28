@@ -31,7 +31,7 @@ class SpotifyApi implements SpotifyApiInterface
 
     public function getTrackIds(TrackCollection $tracks)
     {
-        $tracks = array_map(function(Track $track) {
+        $tracks = array_map(function (Track $track) {
             return $this->searchTrackId($track);
         }, $tracks->getTracks());
         return array_filter($tracks);

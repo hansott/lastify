@@ -3,7 +3,6 @@
 
 namespace HansOtt\Lastify;
 
-
 class TrackCollection
 {
     private $tracks;
