@@ -20,5 +20,5 @@ $spotifyConnection = SpotifyConnection::connect(
     'spotify access token'
 );
 
-$manager = new Synchronizer($spotifyConnection, $lastFmConnection);
+$manager = new Synchronizer($lastFmConnection, $spotifyConnection);
 $manager->syncTopTracksToPlaylist('Top Tracks', 30);

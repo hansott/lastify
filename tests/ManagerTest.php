@@ -2,6 +2,7 @@
 
 namespace HansOtt\Lastify\Test;
 
+use HansOtt\Lastify\SynchronizerTarget;
 use HansOtt\Lastify\Track;
 use HansOtt\Lastify\Track\Artist;
 use HansOtt\Lastify\TrackCollection;
@@ -27,8 +28,8 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
         $playlistId = '123';
         $limit = 30;
         $spotifyPlaylist = new SpotifyPlaylist($playlistName, $playlistId);
-        $spotify = Mockery::mock(SpotifyConnection::class);
-        $spotify
+        $target = Mockery::mock(SynchronizerTarget::class);
+        $target
             ->shouldReceive('createPlaylistIfNotExists')
             ->once()
             ->withArgs([$playlistName])
@@ -39,11 +40,11 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
             ->once()
             ->withArgs([$limit])
             ->andReturn($topTracks);
-        $spotify
+        $target
             ->shouldReceive('updatePlaylistTracks')
             ->once()
             ->withArgs([$spotifyPlaylist, $topTracks]);
-        $manager = new Synchronizer($spotify, $lastFm);
+        $manager = new Synchronizer($lastFm, $target);
         $manager->syncTopTracksToPlaylist($playlistName, $limit);
     }
 }

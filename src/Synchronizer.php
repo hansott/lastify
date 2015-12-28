@@ -3,17 +3,16 @@
 namespace HansOtt\Lastify;
 
 use HansOtt\Lastify\LastFm\LastFmConnection;
-use HansOtt\Lastify\Spotify\SpotifyConnection;
 
 class Synchronizer
 {
     private $target;
     private $source;
 
-    public function __construct(SpotifyConnection $spotify, LastFmConnection $lastFm)
+    public function __construct(LastFmConnection $source, SynchronizerTarget $target)
     {
-        $this->target = $spotify;
-        $this->source = $lastFm;
+        $this->target = $target;
+        $this->source = $source;
     }
 
     public function syncTopTracksToPlaylist($playlistName, $limit = 10)

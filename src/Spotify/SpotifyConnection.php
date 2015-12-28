@@ -2,10 +2,11 @@
 
 namespace HansOtt\Lastify\Spotify;
 
+use HansOtt\Lastify\SynchronizerTarget;
 use HansOtt\Lastify\TrackCollection;
 use SpotifyWebAPI\SpotifyWebAPI;
 
-class SpotifyConnection
+class SpotifyConnection implements SynchronizerTarget
 {
     private $user;
     private $api;
