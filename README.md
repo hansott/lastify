@@ -28,7 +28,7 @@ $ composer require hansott/lastify
 
 require_once 'vendor/autoload.php';
 
-use HansOtt\Lastify\Manager;
+use HansOtt\Lastify\Synchronizer;
 use HansOtt\Lastify\LastFm\LastFmConnection;
 use HansOtt\Lastify\Spotify\SpotifyConnection;
 
@@ -43,8 +43,8 @@ $spotifyConnection = SpotifyConnection::connect(
     'your spotify access token'
 );
 
-$manager = new Manager($spotifyConnection, $lastFmConnection);
-$manager->syncTopTracksToPlaylist('Top Tracks', 30);
+$synchronizer = new Synchronizer($spotifyConnection, $lastFmConnection);
+$synchronizer->syncTopTracksToPlaylist('Top Tracks', 30);
 ```
 
 ## Change log
