@@ -30,22 +30,29 @@ ini_set('display_errors', 'On');
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use HansOtt\Lastify\TrackInfo;
+use HansOtt\Lastify\Synchronizer;
 use HansOtt\Lastify\Services\LastFm;
 use HansOtt\Lastify\Services\Spotify;
-use HansOtt\Lastify\Synchronizer;
-use HansOtt\Lastify\TrackInfo;
+use HansOtt\Lastify\SyncProgressCallback;
 
-$lastFm = LastFm::connect('41678989bddf3a05eef72c583c0f8bd1');
-$spotify = Spotify::connect('BQDhjl-V4_qx1OKKasWU85DrJ23s0pLPvQbRPXLYuJV-JikIBBEc_qo-PW4zHQbcc9QfEe770RDuDp4Yy5vthX93VbGUc-LZ-41voO5uMNsqlgvOD5KVbQuX6yKutZ0YbrFZQIQ0EotBw37tjIhxHi0PiervtgZWlNkBH6po2p89W3SJtIbImOtUoZPyb9BRbPIIJ7i1kZcKUOI7IOLav4sqUQtWQ9t3pfSwjqdjLHfhslYr-aQVxEwss_keVNyBCjBl-s929dPnF3RGie-VoHB2p0tDDuxqEdVlGQNtbE0U2w');
+$lastFm = LastFm::connect('your-lastfm-api-key');
+$spotify = Spotify::connect('your-spotify-access-token');
 
 $synchronizer = new Synchronizer($spotify);
-$topTracks = $lastFm->getTopTracks('hansott', 20);
+$topTracks = $lastFm->getTopTracks('your-lastfm-username', 20);
+$lovedTracks = $lastFm->getLovedTracks('your-lastfm-username', 20);
 
-$onUpdate = function($current, $total, TrackInfo $track) {
-    echo sprintf("[%s/%s] Syncing %s \n", $current, $total, $track->toString());
-};
+class ProgressCallback implements SyncProgressCallback {
+    public function onProgress($current, $total, TrackInfo $currentItem)
+    {
+        echo sprintf("[%s/%s] Syncing %s \n", $current, $total, $currentItem->toString());
+    }
+}
 
-$synchronizer->syncToPlaylist('Top Tracks', $topTracks, $onUpdate);
+$synchronizer->syncToPlaylist('Top Tracks', $topTracks, new ProgressCallback());
+$synchronizer->syncToPlaylist('Loved Tracks', $lovedTracks, new ProgressCallback());
+
 ```
 
 ```sh
