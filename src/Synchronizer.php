@@ -17,7 +17,8 @@ final class Synchronizer
      *
      * @param CanManagePlaylists $target The target.
      */
-    public function __construct(CanManagePlaylists $target) {
+    public function __construct(CanManagePlaylists $target)
+    {
         $this->target = $target;
     }
 

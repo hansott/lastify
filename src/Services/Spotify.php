@@ -45,7 +45,7 @@ final class Spotify implements CanManagePlaylists
 
     private function getSearchQuery(TrackInfo $info)
     {
-        $addArtistName = function($artistNames, Artist $artist) {
+        $addArtistName = function ($artistNames, Artist $artist) {
             return $artistNames . $artist->getName();
         };
 
@@ -141,8 +141,7 @@ final class Spotify implements CanManagePlaylists
 
             if (empty($trackId)) {
                 $syncResult->addIgnoredTrack($track);
-            }
-            else {
+            } else {
                 $trackIds[] = $trackId;
             }
         }

@@ -51,13 +51,14 @@ final class TrackInfo
         return $this->name;
     }
 
-    public function getArtists() {
+    public function getArtists()
+    {
         return $this->artists;
     }
 
     public function toString()
     {
-        $artists = array_map(function(Artist $artist) {
+        $artists = array_map(function (Artist $artist) {
             return $artist->getName();
         }, $this->artists);
 
