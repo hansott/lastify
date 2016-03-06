@@ -3,7 +3,11 @@
     "description": "Lastify syncs spotify playlists with your last.fm top tracks.",
     "keywords": [
         "hansott",
-        "lastify"
+        "lastify",
+        "spotify",
+        "lastfm",
+        "playlists",
+        "syncing"
     ],
     "homepage": "https://github.com/hansott/lastify",
     "license": "MIT",
