@@ -1,8 +1,10 @@
 <?php
 
-namespace HansOtt\Lastify\Track;
+namespace HansOtt\Lastify\Exception;
 
-class Artist
+use Exception;
+
+final class PlaylistDoesNotExist extends Exception
 {
     private $name;
 
