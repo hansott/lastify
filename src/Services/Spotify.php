@@ -58,6 +58,7 @@ final class Spotify implements CanManagePlaylists
     {
         $options = [
             'type' => 'track',
+            'limit' => 1,
         ];
 
         $query = $this->getSearchQuery($track);
